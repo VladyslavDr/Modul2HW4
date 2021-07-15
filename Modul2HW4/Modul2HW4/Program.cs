@@ -1,9 +1,7 @@
-﻿using System;
-
-public class Program
+﻿public class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Hello World!");
+        new Starter().Run();
     }
 }
