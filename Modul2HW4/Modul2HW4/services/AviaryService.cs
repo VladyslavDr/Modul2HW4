@@ -1,4 +1,5 @@
-﻿public class AviaryService : IAviaryService
+﻿using System;
+public class AviaryService : IAviaryService
 {
     public Animal[] GetAnimalsBySex(Aviary aviary, Sex sex)
     {
@@ -36,5 +37,6 @@
 
     public void SortAnimals(Aviary aviary)
     {
+        Array.Sort(aviary.Animals, new AnimalWeightComparer());
     }
 }

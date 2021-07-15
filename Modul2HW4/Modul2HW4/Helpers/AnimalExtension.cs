@@ -16,11 +16,10 @@
         }
 
         var animalsOfSameSexWithoutNull = new Animal[counter];
-        var index2 = 0;
 
-        foreach (var animal in animalsOfSameSex)
+        for (var i = 0; i < animalsOfSameSexWithoutNull.Length; i++)
         {
-            animalsOfSameSexWithoutNull[index2++] = animal;
+            animalsOfSameSexWithoutNull[i] = animalsOfSameSex[i];
         }
 
         return animalsOfSameSexWithoutNull;

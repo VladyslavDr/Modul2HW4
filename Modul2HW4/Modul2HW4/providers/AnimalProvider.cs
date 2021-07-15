@@ -1,11 +1,5 @@
 ﻿public class AnimalProvider : IAnimalProvider
 {
-    // private readonly IAnimalProvider _animalProvider;
-    public AnimalProvider(/* IAnimalProvider animalProvider */)
-    {
-        // _animalProvider = animalProvider;
-    }
-
     public Animal[] GetAnimals()
     {
         return new Animal[]
