@@ -1,4 +1,4 @@
-﻿public class Deer : OddHoofed
+﻿public class Deer : ClovenHoofed
 {
     public KindOfDeer KindOfDeer { get; set; }
 }
