@@ -1,6 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 public class AviaryService : IAviaryService
 {
+    private readonly IComparer<Animal> _animalComparer;
+
+    public AviaryService(IComparer<Animal> animalComparer)
+    {
+        _animalComparer = animalComparer;
+    }
+
     public Animal[] GetAnimalsBySex(Aviary aviary, Sex sex)
     {
         return aviary.GetAnimalsBySex(sex);
@@ -37,6 +45,6 @@ public class AviaryService : IAviaryService
 
     public void SortAnimals(Aviary aviary)
     {
-        Array.Sort(aviary.Animals, new AnimalWeightComparer());
+        Array.Sort(aviary.Animals, _animalComparer);
     }
 }

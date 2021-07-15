@@ -1,18 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 public class Starter
 {
     public void Run()
     {
-        var animals = new AnimalProvider().GetAnimals();
+        var serviceProvider = new ServiceCollection()
+            .AddTransient<IAnimalProvider, AnimalProvider>()
+            .AddTransient<IAviaryService, AviaryService>()
+            .AddTransient<IAnimalService, AnimalService>()
+            .AddTransient<IComparer<Animal>, AnimalNameComparer>()
+            .BuildServiceProvider();
+
+        var animalService = serviceProvider.GetService<IAnimalService>();
+        var aviaryService = serviceProvider.GetService<IAviaryService>();
+
+        var animals = animalService.GetAnimals();
+        Print(animals);
 
         var aviary = new Aviary { Animals = animals };
-
         Print(aviary.Animals);
 
-        new AviaryService().SortAnimals(aviary);
-
+        aviaryService.SortAnimals(aviary);
         Print(aviary.Animals);
-        Print(aviary.GetAnimalsBySex(Sex.MALE));
     }
 
     public void Print(Animal[] animals)
